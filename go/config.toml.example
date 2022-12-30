@@ -1,0 +1,16 @@
+[server]
+  address = ":8088"
+  dumpRouterMap = false
+  debug = false
+
+[logger]
+  level = "info"
+
+[database.logger]
+  level = "all"
+  stdout = true
+
+[database.default]
+  debug = true
+  timezone = "Asia/Shanghai"
+  link = "mysql:root:root@tcp(127.0.0.1:3306)/apijson_go?charset=utf8mb4&parseTime=True&loc=Local"
