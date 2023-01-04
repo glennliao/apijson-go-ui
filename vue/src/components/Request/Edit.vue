@@ -82,7 +82,14 @@
   </a-modal>
 </template>
 
-<script lang="ts" setup>
+
+<script lang="ts">
+export default {
+  name:"RequestEdit"
+}
+</script>
+
+<script lang="ts" setup >
 import {ref, watch} from "vue";
 import api from '../../api'
 import {message} from "ant-design-vue";

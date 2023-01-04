@@ -1,4 +1,4 @@
-module apijson-go-ui
+module github.com/glennliao/apijson-go-ui
 
 go 1.18
 

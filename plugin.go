@@ -1,7 +1,8 @@
-package main
+package apijson_go_ui
 
 import (
-	"apijson-go-ui/api"
+	"github.com/glennliao/apijson-go-ui/api"
+	_ "github.com/glennliao/apijson-go-ui/packed"
 	_ "github.com/gogf/gf/contrib/drivers/mysql/v2"
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
@@ -40,14 +41,14 @@ func response(r *ghttp.Request) {
 	})
 }
 
-func main() {
-	s := g.Server()
-	s.Group("/", func(group *ghttp.RouterGroup) {
+func Handler(s *ghttp.Server) {
+
+	s.Group("/ui", func(group *ghttp.RouterGroup) {
 		group.Middleware(response)
 		group.Bind(api.Access)
 		group.Bind(api.Request)
 	})
 
-	s.Run()
+	s.AddStaticPath("/ui", "dist")
 
 }

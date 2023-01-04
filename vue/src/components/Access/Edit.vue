@@ -199,6 +199,12 @@
   </a-modal>
 </template>
 
+<script lang="ts">
+export default {
+  name:"AccessEdit"
+}
+</script>
+
 <script lang="ts" setup>
 import {ref, watch} from "vue";
 import api from '../../api'

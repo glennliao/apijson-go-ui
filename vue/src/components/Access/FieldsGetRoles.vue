@@ -19,7 +19,7 @@
               </div>
               <div class="flex-1">
                 <a-select
-                    v-model:value="fieldsGet[role].in[item.value]"
+                    v-model:value="fieldsGet[roleStr].in[item.value]"
                     :options="operatorOptions"
                     mode="multiple"
                     :maxTagCount="4"
@@ -80,7 +80,9 @@ const props = defineProps({
     type: String,
     default: 'add'
   },
-  role: {},
+  role: {
+    type:String
+  },
 })
 const emit = defineEmits(['change'])
 
@@ -96,6 +98,8 @@ const operatorOptions = ref([
     label: "右Like",
   }
 ])
+
+const roleStr = props.role as string
 
 
 

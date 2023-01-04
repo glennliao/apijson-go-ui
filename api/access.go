@@ -1,8 +1,8 @@
 package api
 
 import (
-	. "apijson-go-ui/api/internal"
 	"context"
+	. "github.com/glennliao/apijson-go-ui/api/internal"
 	"github.com/glennliao/apijson-go/config"
 	"github.com/gogf/gf/v2/frame/g"
 )

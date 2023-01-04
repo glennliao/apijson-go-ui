@@ -1,5 +1,5 @@
 @tailwind components;
-@tailwind utilities;
+/*@tailwind utilities;*/
 
 #app{
   padding: 8px;
