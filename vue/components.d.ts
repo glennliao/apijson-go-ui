@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     AButton: typeof import('ant-design-vue/es')['Button']
     ACard: typeof import('ant-design-vue/es')['Card']
     Access: typeof import('./src/components/Access/index.vue')['default']
+    AccessAdd: typeof import('./src/components/Access/Add.vue')['default']
     AccessEdit: typeof import('./src/components/Access/Edit.vue')['default']
     AccessFieldsGetRoles: typeof import('./src/components/Access/FieldsGetRoles.vue')['default']
     ACheckbox: typeof import('ant-design-vue/es')['Checkbox']

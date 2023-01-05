@@ -10,7 +10,7 @@
   >
     <a-form
         :model="formInfo"
-        :label-col="{ span: 3 }"
+        :label-col="{ span: 2 }"
         :wrapper-col="{ span: 21 }"
         name="request"
         ref="formRef"
@@ -44,26 +44,59 @@
             </a-col>
           </a-row>
 
-          <a-form-item label="debug" name="debug">
-            <a-switch
-                v-model:checked="formInfo['debug']"
-                :checkedValue="1"
-                :unCheckedValue="0"
-                checked-children="是"
-                un-checked-children="否"
-            />
-          </a-form-item>
 
-          <a-form-item label="row_key" name="row_key" :rules="{ required: true, message: 'row_key不能为空' }">
-            <a-select
-                v-model:value="formInfo['row_key']"
-                :options="tableFields"
-                mode="multiple"
-                :maxTagCount="4"
-                placeholder="请选择rowKey"
-                style="width: 100%"
-            />
-          </a-form-item>
+
+          <a-row :gutter="8">
+            <a-col :span="12">
+              <a-form-item label="debug" :label-col="{col:2}" name="debug">
+                <a-switch
+                    v-model:checked="formInfo['debug']"
+                    :checkedValue="1"
+                    :unCheckedValue="0"
+                    checked-children="是"
+                    un-checked-children="否"
+                />
+              </a-form-item>
+            </a-col>
+            <a-col :span="12">
+              <a-form-item :label-col="{col:2}" label="executor" name="executor" >
+                <a-select
+                    v-model:value="formInfo['executor']"
+                    :options="queryExecutorOptions"
+                    :maxTagCount="4"
+                    placeholder="请选择executor"
+                    style="width: 100%"
+                />
+              </a-form-item>
+            </a-col>
+          </a-row>
+
+          <a-row :gutter="8">
+            <a-col :span="12">
+              <a-form-item :label-col="{col:2}" label="row_key" name="row_key" :rules="{ required: true, message: 'row_key不能为空' }">
+                <a-select
+                    v-model:value="formInfo['row_key']"
+                    :options="tableFields"
+                    mode="multiple"
+                    :maxTagCount="4"
+                    placeholder="请选择rowKey"
+                    style="width: 100%"
+                />
+              </a-form-item>
+            </a-col>
+            <a-col :span="12">
+              <a-form-item :label-col="{col:2}" label="row_key_gen" name="row_key_gen" >
+                <a-select
+                    v-model:value="formInfo['row_key_gen']"
+                    :options="rowKeyGenOptions"
+                    :maxTagCount="4"
+                    placeholder="请选择row_key_gen"
+                    style="width: 100%"
+                />
+              </a-form-item>
+            </a-col>
+          </a-row>
+
 
           <a-form-item label="detail" name="detail">
             <a-textarea
@@ -218,12 +251,11 @@ const visible = ref(false)
 
 const emit = defineEmits(['update:visible', 'refresh'])
 
-// 初始化
-const {loadRoleList, roleOptions,loadTableFields, tableFields} = useCommonData()
+const {loadRoleList, roleOptions,queryExecutorOptions, actionExecutorOptions,rowKeyGenOptions,
+  loadTableFields, tableFields} = useCommonData()
 const formInfo = ref<any>({})
 
 
-// 监听roles列表的变化， 对fieldsGet进行初始化和增减操作
 const fieldsGetRoleList = ref<any>([])
 watch(() => fieldsGetRoleList.value, (newVal, oldVal) => {
   let key = ''

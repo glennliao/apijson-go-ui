@@ -13,6 +13,33 @@ type (
 )
 
 type (
+	AccessItem struct {
+		Alias     string
+		RowKey    []string
+		FieldsGet g.Map
+	}
+
+	RequestItem struct {
+		Tag     string
+		Request []g.Map
+	}
+
+	AddItem struct {
+		TableName string
+		Access    AccessItem
+		Request   RequestItem
+	}
+
+	AccessAddReq struct {
+		g.Meta `method:"POST" path:"/access"`
+		Data   []AddItem
+	}
+
+	AccessAddRes struct {
+	}
+)
+
+type (
 	AccessUpdateReq struct {
 		g.Meta `method:"PUT" path:"/access"`
 		Id     int
@@ -24,12 +51,15 @@ type (
 )
 
 type (
-	AccessRoleListReq struct {
-		g.Meta `method:"GET" path:"/access/role"`
+	AccessOptionListReq struct {
+		g.Meta `method:"GET" path:"/access/options"`
 	}
 
-	AccessRoleListRes struct {
-		List []string
+	AccessOptionListRes struct {
+		RoleList           []string
+		RowKeyGenList      []string
+		QueryExecutorList  []string
+		ActionExecutorList []string
 	}
 )
 
@@ -40,6 +70,17 @@ type (
 	}
 
 	AccessTableFieldsListRes struct {
+		List []g.Map
+	}
+)
+
+type (
+	AccessTableListReq struct {
+		g.Meta `method:"GET" path:"/access/table"`
+		Table  string
+	}
+
+	AccessTableListRes struct {
 		List []g.Map
 	}
 )

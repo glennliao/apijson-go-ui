@@ -1,10 +1,11 @@
-module github.com/glennliao/apijson-go-ui
+module apijson-go-demo
 
 go 1.18
 
 require (
 	github.com/glennliao/apijson-go v0.0.0
-	github.com/gogf/gf/contrib/drivers/mysql/v2 v2.2.5
+	github.com/glennliao/apijson-go-ui v0.0.0
+	github.com/gogf/gf/contrib/drivers/mysql/v2 v2.2.6
 	github.com/gogf/gf/v2 v2.2.5
 )
 
@@ -37,4 +38,7 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/glennliao/apijson-go v0.0.0 => ../apijson-go
+replace (
+	github.com/glennliao/apijson-go v0.0.0 => ../../apijson-go
+	github.com/glennliao/apijson-go-ui v0.0.0 => ../
+)

@@ -28,7 +28,14 @@
   </div>
 
 
-  <Edit ref="EditDrawer" @refresh="loadList"/>
+  <Edit ref="EditModal" @refresh="loadList"/>
+  <Add ref="AddModal" @refresh="loadList"/>
+
+  <div class="fixed" style="bottom:20px;right:20px" >
+    <a-button type="primary" shape="circle" @click="add">
+      <template #icon><PlusOutlined /></template>
+    </a-button>
+  </div>
 
 
 </template>
@@ -38,7 +45,9 @@
 import {reactive, ref} from "vue";
 import api from '../../api'
 import Edit from "./Edit.vue";
+import Add from "./Add.vue";
 import {methods} from "../../consts";
+import { PlusOutlined } from '@ant-design/icons-vue';
 
 // 获取表格列表数据
 const list = ref<any[]>([])
@@ -68,10 +77,16 @@ const loadList = () => {
 loadList()
 
 
-const EditDrawer = ref()
+const EditModal = ref()
 function edit(item:any){
   // @ts-ignore
-  EditDrawer.value.open(item)
+  EditModal.value.open(item)
+}
+
+const AddModal = ref()
+function add(){
+  // @ts-ignore
+  AddModal.value.open()
 }
 
 

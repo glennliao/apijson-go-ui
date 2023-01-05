@@ -53,7 +53,7 @@
         <a-textarea
             v-model:value="formInfo['structure']"
             placeholder="请输入structure"
-            :rows="10"
+            :rows="6"
         />
       </a-form-item>
 
@@ -61,6 +61,14 @@
         <a-input
             v-model:value="formInfo['exec_queue']"
             placeholder="exec_queue"
+        />
+      </a-form-item>
+
+      <a-form-item label="executor" name="executor">
+        <a-textarea
+            v-model:value="formInfo['executor']"
+            placeholder="请输入executor"
+            :rows="3"
         />
       </a-form-item>
 

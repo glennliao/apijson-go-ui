@@ -4,7 +4,7 @@ import App from './App.vue'
 
 import router from './router'
 // import store from './store'
-
+import 'virtual:windi.css'
 
 import 'ant-design-vue/es/message/style/css'
 

@@ -12,16 +12,38 @@ export const useCommonData = () => {
 
     // 权限角色列表
     const roleOptions = ref<any>([])
+    const rowKeyGenOptions = ref<any>([])
+    const queryExecutorOptions = ref<any>([])
+    const actionExecutorOptions = ref<any>([])
     const loadRoleList = () => {
-        api.access.roleList({}).then((data: any) => {
-            if (data?.List?.length) {
-                roleOptions.value = data.List.map((item: any) => {
-                    return {
-                        value: item,
-                        label: item
-                    }
-                })
-            }
+        api.access.optionsList({}).then((data: any) => {
+            roleOptions.value = data.RoleList.map((item: any) => {
+                return {
+                    value: item,
+                    label: item
+                }
+            })
+
+            rowKeyGenOptions.value = data.RowKeyGenList.map((item: any) => {
+                return {
+                    value: item,
+                    label: item
+                }
+            })
+
+            queryExecutorOptions.value = data.QueryExecutorList.map((item: any) => {
+                return {
+                    value: item,
+                    label: item
+                }
+            })
+
+            actionExecutorOptions.value = data.ActionExecutorList.map((item: any) => {
+                return {
+                    value: item,
+                    label: item
+                }
+            })
         })
     }
 
@@ -33,11 +55,12 @@ export const useCommonData = () => {
             if (data?.List?.length) {
                 tableFields.value = data.List
             }
+            return data
         })
     }
 
     return {
-        loadRoleList, roleOptions,
+        loadRoleList, roleOptions, queryExecutorOptions, actionExecutorOptions,rowKeyGenOptions,
         loadTableFields,tableFields
     }
 }

@@ -1,12 +1,14 @@
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios'
 import {message} from "ant-design-vue/es";
 
-// axios.defaults.baseURL = "http://127.0.0.1:8088"
+let baseURL = "./"
 
-
+if (import.meta.env.DEV){
+    baseURL = 'http://127.0.0.1:8090/ui'
+}
 
 const instance = axios.create({
-    baseURL: 'http://127.0.0.1:8090/ui',
+    baseURL: baseURL,
     timeout: 5000
 })
 
@@ -42,9 +44,11 @@ instance.interceptors.response.use(
 export default {
     access:{
         list: (p:any) => instance.get("/access",{params:p}),
+        add: (p:any) => instance.post("/access",{data:p}),
         update: (p:any) => instance.put("/access",{data:p, id:p.id}),
-        roleList: (p:any) => instance.get("/access/role",{params:p}),
+        optionsList: (p:any) => instance.get("/access/options",{params:p}),
         tableFields: (p:any) => instance.get("/access/table-fields",{params:p}),
+        tableList: (p:any) => instance.get("/access/table",{params:p}),
     },
     request:{
         list: (p:any) => instance.get("/request",{params:p}),
